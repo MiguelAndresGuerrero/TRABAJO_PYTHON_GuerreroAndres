@@ -203,6 +203,7 @@ def menu_moderador(data):
 # Menú del gerente y administrador
 def menu_gerente(data):
 
+
     while True:
         print("-----------------------------")
         print("      MENU DE GERENTE        ")
