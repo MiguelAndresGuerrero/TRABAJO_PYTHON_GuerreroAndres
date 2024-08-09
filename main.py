@@ -38,7 +38,7 @@ print("""
     """)
 Rango = int(input("¿Cuál es tu forma de acceso? "))
 
-# Guardamos la fecha y hora cuando se haga la venta
+# Guardamos la fecha y hora cuando se haga la venta de los medicamentos empleados y pacientes
 def registrar_venta(paciente, empleado, medicamentos):
     fecha_venta = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
     venta = {
@@ -51,7 +51,7 @@ def registrar_venta(paciente, empleado, medicamentos):
     guardarCompras(compras)
     print(f"Venta registrada con éxito el {fecha_venta}")
 
-# Guardamos la fecha y hora cuando se haga la compra
+# Guardamos la fecha y hora cuando se haga la compra del provedor y medicamentos
 def registrar_compra(proveedor, medicamentos):
     fecha_compra = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
     compra = {
