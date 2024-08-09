@@ -18,5 +18,45 @@
             "cantidad": 5,
             "precio": "10"
         }
+    },
+    {
+        "fecha": "2024-08-09 08:48:21",
+        "paciente": {
+            "id": 2,
+            "nombre": "Ana",
+            "cargo": "Vendedora",
+            "fechaContratacion": "2019-05-15T00:00:00Z"
+        },
+        "empleado": {
+            "id": 2,
+            "nombre": "Ana",
+            "cargo": "Vendedora",
+            "fechaContratacion": "2019-05-15T00:00:00Z"
+        },
+        "medicamento": {
+            "nombre": "Paracetamol",
+            "cantidad": 10,
+            "precio": "20"
+        }
+    },
+    {
+        "fecha": "2024-08-09 10:05:16",
+        "paciente": {
+            "id": 2,
+            "nombre": "Maria",
+            "direccion": "Calle 456",
+            "telefono": "555-5678"
+        },
+        "empleado": {
+            "id": 1,
+            "nombre": "Pedro",
+            "cargo": "Vendedor",
+            "fechaContratacion": "2020-01-01T00:00:00Z"
+        },
+        "medicamento": {
+            "nombre": "Ibuprofeno",
+            "cantidad": 10,
+            "precio": "25"
+        }
     }
 ]

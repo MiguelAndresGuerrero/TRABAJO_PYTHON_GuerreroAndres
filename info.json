@@ -7,7 +7,7 @@
                 "id": 1,
                 "producto": "Paracetamol",
                 "precio": "20",
-                "stock": "150",
+                "stock": "140",
                 "fecha de expiracion": "2024-06-15T00:00:00Z",
                 "provedor": "provedorA",
                 "contacto": "contacto@proveedora.com"
@@ -16,7 +16,7 @@
                 "id": 2,
                 "producto": "Ibuprofeno",
                 "precio": "25",
-                "stock": "50",
+                "stock": "40",
                 "fecha de expiracion": "2024-12-01T00:00:00Z",
                 "provedor": "provedorB",
                 "contacto": "contacto@proveedora.com"

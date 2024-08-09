@@ -43,7 +43,7 @@ def registrar_venta(data):
     fecha_venta = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
     
     # Seleccionar paciente
-    pacientes = data[4]["Productos"]
+    pacientes = data[3]["Productos"]
 
     for i, paciente in enumerate(pacientes):
         print(f"{i+1}. {paciente['nombre']}")
