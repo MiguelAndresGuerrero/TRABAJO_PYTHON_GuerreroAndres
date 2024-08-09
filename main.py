@@ -32,6 +32,9 @@ print(f"Bienvenido Usuario {nombre_usuario}")
 # Login de usuarios
 print("¿Cómo quieres ingresar?")
 print("""
+      =======================================
+                    MENU PRINCIPAL
+      =======================================
         1. Cliente
         2. Vendedor
         3. Gerente
@@ -47,7 +50,7 @@ def registrar_venta(data):
 
     for i, paciente in enumerate(pacientes):
         print(f"{i+1}. {paciente['nombre']}")
-    paciente_id = int(input("Seleccione el ID del paciente: "))
+    paciente_id = int(input("Seleccione el ID del paciente: ")) - 1
     paciente = pacientes[paciente_id]
     
     # Seleccionar empleado
@@ -109,7 +112,9 @@ def registrar_compra(data):
     medicamentos = data[0]["Productos"]
 
     for i, medicamento in enumerate(medicamentos):
+        print("-------------------------------------------------------------------------------------------------------------")
         print(f"{i+1}. {medicamento['producto']} - Precio de compra: {medicamento['precio']} - Stock: {medicamento['stock']}")
+        print("-------------------------------------------------------------------------------------------------------------")
     medicamento_id = int(input("Seleccione el ID del medicamento: ")) - 1
     medicamento = medicamentos[medicamento_id]
     
@@ -170,9 +175,9 @@ def menu_cliente(data):
 def menu_moderador(data):
 
     while True:
-        print("............................")
+        print("=============================")
         print("      MENU DEL MODERADOR     ")
-        print("............................")
+        print("=============================")
         print("1. Revisar productos")
         print("2. Modificar productos")
         print("3. Registrar compra")
@@ -189,11 +194,11 @@ def menu_moderador(data):
             registrar_compra(data)
                 
         elif opcion == "4":
-            print("Gracias por usar el programa")
+            print("Gracias por usar el programa, Vuelve pronto :D")
             break
         
         else:
-            print("Opción inválida")
+            print("Opción inválida, Selecciona una valida")
 
 # Menú del gerente y administrador
 def menu_gerente(data):

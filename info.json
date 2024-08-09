@@ -7,7 +7,7 @@
                 "id": 1,
                 "producto": "Paracetamol",
                 "precio": "20",
-                "stock": "140",
+                "stock": "90",
                 "fecha de expiracion": "2024-06-15T00:00:00Z",
                 "provedor": "provedorA",
                 "contacto": "contacto@proveedora.com"
@@ -16,7 +16,7 @@
                 "id": 2,
                 "producto": "Ibuprofeno",
                 "precio": "25",
-                "stock": "40",
+                "stock": "30",
                 "fecha de expiracion": "2024-12-01T00:00:00Z",
                 "provedor": "provedorB",
                 "contacto": "contacto@proveedora.com"
@@ -43,7 +43,7 @@
                 "id": 5,
                 "producto": "Cetirizina",
                 "precio": "10",
-                "stock": "105",
+                "stock": "100",
                 "fecha de expiracion": "2024-01-23T00:00:00Z",
                 "provedor": "provedorA",
                 "contacto": "contacto@proveedora.com"
