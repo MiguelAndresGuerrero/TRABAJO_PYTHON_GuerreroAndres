@@ -1,302 +1,273 @@
 [
     {
         "id": 1,
-        "Tienda": "Medicamentos",
+        "Seccion": "Medicamentos",
         "Productos": [
             {
                 "id": 1,
-                "producto": "Pan de Bono",
-                "precio": "800"
+                "producto": "Paracetamol",
+                "precio": "20",
+                "stock": "150",
+                "fecha de expiracion": "2024-06-15T00:00:00Z",
+                "provedor": "provedorA",
+                "contacto": "contacto@proveedora.com"
             },
             {
                 "id": 2,
-                "producto": "Pan de Queso",
-                "precio": "800 COP"
+                "producto": "Ibuprofeno",
+                "precio": "25",
+                "stock": "50",
+                "fecha de expiracion": "2024-12-01T00:00:00Z",
+                "provedor": "provedorB",
+                "contacto": "contacto@proveedora.com"
             },
             {
                 "id": 3,
-                "producto": "Pan Cascarita",
-                "precio": "500 COP"
+                "producto": "Aspirina",
+                "precio": "15",
+                "stock": "30",
+                "fecha de expiracion": "2024-05-20T00:00:00Z",
+                "provedor": "provedorC",
+                "contacto": "contacto@proveedora.com"
             },
             {
                 "id": 4,
-                "producto": "Galletas Saltin",
-                "precio": "800 COP"
+                "producto": "Amoxicilina",
+                "precio": "40",
+                "stock": "75",
+                "fecha de expiracion": "2025-08-11T00:00:00Z",
+                "provedor": "provedorA",
+                "contacto": "contacto@proveedora.com"
             },
             {
                 "id": 5,
-                "producto": "Calentano",
-                "precio": "700 COP"
+                "producto": "Cetirizina",
+                "precio": "10",
+                "stock": "105",
+                "fecha de expiracion": "2024-01-23T00:00:00Z",
+                "provedor": "provedorA",
+                "contacto": "contacto@proveedora.com"
             },
             {
                 "id": 6,
-                "producto": "Rollito de Sal",
-                "precio": "900 COP"
+                "producto": "Losartan",
+                "precio": "55",
+                "stock": "95",
+                "fecha de expiracion": "2024-07-30T00:00:00Z",
+                "provedor": "provedorC",
+                "contacto": "contacto@proveedora.com"
             },
             {
                 "id": 7,
-                "producto": "Pan relleno de Arequipe",
-                "precio": "1150 COP"
+                "producto": "Metformina",
+                "precio": "60",
+                "stock": "180",
+                "fecha de expiracion": "2024-09-29T00:00:00Z",
+                "provedor": "provedorA",
+                "contacto": "contacto@proveedora.com"
             },
             {
                 "id": 8,
-                "producto": "Pan con Salchicha",
-                "precio": "1300 COP"
+                "producto": "Atorvastalina",
+                "precio": "45",
+                "stock": "200",
+                "fecha de expiracion": "2024-10-05T00:00:00Z",
+                "provedor": "provedorB",
+                "contacto": "contacto@proveedora.com"
             },
             {
                 "id": 9,
-                "producto": "Pan recubierto de chocolate",
-                "precio": "1200 COP"
+                "producto": "Clonazepam",
+                "precio": "35",
+                "stock": "25",
+                "fecha de expiracion": "2024-04-21T00:00:00Z",
+                "provedor": "provedorC",
+                "contacto": "contacto@proveedora.com"
+            },
+            {
+                "id": 10,
+                "producto": "Loratadina",
+                "precio": "22",
+                "stock": "120",
+                "fecha de expiracion": "202-02-19T00:00:00Z",
+                "provedor": "provedorC",
+                "contacto": "contacto@proveedora.com"
             }
         ]
     },
     {
         "id": 2,
-        "Tienda": "Ventas",
+        "Seccion": "Compras",
         "Productos": [
             {
-                "id": 1,
-                "producto": "Pastel de Vainilla",
-                "precio": "5000 COP"
+                "fecha de compra": "2023-01-01T00:00:00Z",
+                "provedor": "provedorA",
+                "contacto": "contacto@proveedora.com",
+                "medicamento comprado": "Paracetamol",
+                "CantidadComprada": "50",
+                "precioCompra": "5"
             },
             {
-                "id": 2,
-                "producto": "Pastel de Chocolate",
-                "precio": "5500 COP"
+                "fecha de compra": "2023-01-01T00:00:00Z",
+                "provedor": "provedorB",
+                "contacto": "contacto@proveedora.com",
+                "medicamento comprado": "Ibuprofeno",
+                "CantidadComprada": "25",
+                "precioCompra": "20"
             },
             {
-                "id": 3,
-                "producto": "Pastel de bodas",
-                "precio": "10000 COP"
+                "fecha de compra": "2023-01-01T00:00:00Z",
+                "provedor": "provedorC",
+                "contacto": "contacto@proveedora.com",
+                "medicamento comprado": "Aspirina",
+                "CantidadComprada": "10",
+                "precioCompra": "12"
             },
             {
-                "id": 4,
-                "producto": "Glaseado de Vainilla",
-                "precio": "3000 COP"
+                "fecha de compra": "2023-01-01T00:00:00Z",
+                "provedor": "provedorA",
+                "contacto": "contacto@proveedora.com",
+                "medicamento comprado": "Amoxicilina",
+                "CantidadComprada": "30",
+                "precioCompra": "35"
             },
             {
-                "id": 5,
-                "producto": "Glaseado de Chocolate",
-                "precio": "3500 COP"
+                "fecha de compra": "2023-01-01T00:00:00Z",
+                "provedor": "provedorB",
+                "contacto": "contacto@proveedora.com",
+                "medicamento comprado": "Cetirizina",
+                "CantidadComprada": "50",
+                "precioCompra": "8"
             },
             {
-                "id": 6,
-                "producto": "Pastel de Arequipe",
-                "precio": "5700 COP"
+                "fecha de compra": "2023-01-01T00:00:00Z",
+                "provedor": "provedorC",
+                "contacto": "contacto@proveedora.com",
+                "medicamento comprado": "Lorsartan",
+                "CantidadComprada": "40",
+                "precioCompra": "50"
             },
             {
-                "id": 7,
-                "producto": "Pastel de Oreo",
-                "precio": "7000 COP"
+                "fecha de compra": "2023-01-01T00:00:00Z",
+                "provedor": "provedorA",
+                "contacto": "contacto@proveedora.com",
+                "medicamento comprado": "Metformina",
+                "CantidadComprada": "60",
+                "precioCompra": "55"
             },
             {
-                "id": 8,
-                "producto": "Postre de limon",
-                "precio": "4300 COP"
+                "fecha de compra": "2023-01-01T00:00:00Z",
+                "provedor": "provedorB",
+                "contacto": "contacto@proveedora.com",
+                "medicamento comprado": "Atorvastatina",
+                "CantidadComprada": "70",
+                "precioCompra": "40"
             },
             {
-                "id": 9,
-                "producto": "Postre de vainilla",
-                "precio": "4000 COP"
+                "fecha de compra": "2023-01-01T00:00:00Z",
+                "provedor": "provedorC",
+                "contacto": "contacto@proveedora.com",
+                "medicamento comprado": "Clonazepam",
+                "CantidadComprada": "15",
+                "precioCompra": "32"
             },
             {
-                "id": 10,
-                "producto": "Postre de tres leches",
-                "precio": "4500 COP"
-            }
-        ]
-    },
-    {
-        "id": 3,
-        "Tienda": "Compras",
-        "Productos": [
-            {
-                "id": 1,
-                "producto": "Coca-Cola",
-                "precio": "3000 COP"
-            },
-            {
-                "id": 2,
-                "producto": "Pepsi",
-                "precio": "2900 COP"
-            },
-            {
-                "id": 3,
-                "producto": "Red-Bull",
-                "precio": "4000 COP"
-            },
-            {
-                "id": 4,
-                "producto": "Gatorade",
-                "precio": "3700 COP"
-            },
-            {
-                "id": 5,
-                "producto": "Budweiser",
-                "precio": "3200 COP"
-            },
-            {
-                "id": 6,
-                "producto": "Hit",
-                "precio": "2500 COP"
-            },
-            {
-                "id": 7,
-                "producto": "Pony-Malta",
-                "precio": "2300 COP"
-            },
-            {
-                "id": 8,
-                "producto": "Sprite",
-                "precio": "3200 COP"
-            },
-            {
-                "id": 9,
-                "producto": "Monster",
-                "precio": "3000 COP"
-            },
-            {
-                "id": 10,
-                "producto": "Tropicana",
-                "precio": "2400 COP"
+                "fecha de compra": "2023-01-01T00:00:00Z",
+                "provedor": "provedorA",
+                "contacto": "contacto@proveedora.com",
+                "medicamento comprado": "Loratadina",
+                "CantidadComprada": "50",
+                "precioCompra": "20"
             }
         ]
     },
     {
         "id": 4,
-        "Tienda": "Proveedores",
+        "Seccion": "Proveedores",
         "Productos": [
             {
                 "id": 1,
-                "producto": "1 pan con salchicha y 1 Pony malta",
-                "precio": "3000 COP"
+                "Nombre": "ProvedorA",
+                "Contacto": "contacto@proveedora.com",
+                "Direccion": "calle Proveedor 456"
             },
             {
                 "id": 2,
-                "producto": "1 Postre de oreo y 1 Budweiser",
-                "precio": "9000 COP"
+                "Nombre": "ProvedorB",
+                "Contacto": "contacto@proveedorb.com",
+                "Direccion": "calle Proveedor 789"
             },
             {
                 "id": 3,
-                "producto": "6 Panes Integrales",
-                "precio": "4000 COP"
-            },
-            {
-                "id": 4,
-                "producto": "5 Panes cubiertos de chocolate",
-                "precio": "5500 COP"
-            },
-            {
-                "id": 5,
-                "producto": "3 Pasteles de Vainilla",
-                "precio": "13000 COP"
-            },
-            {
-                "id": 6,
-                "producto": "4 Postres de Oreo",
-                "precio": "25000 COP"
-            },
-            {
-                "id": 7,
-                "producto": "1 pan con salchicha y 1 Pony malta",
-                "precio": "3000 COP"
-            },
-            {
-                "id": 8,
-                "producto": "1 Postre de oreo y 1 Budweiser",
-                "precio": "9000 COP"
+                "Nombre": "ProvedorC",
+                "Contacto": "contacto@proveedorc.com",
+                "Direccion": "calle Proveedor 123"
             }
         ]
     },
     {
         "id": 5,
-        "Tienda": "Pacientes",
+        "Seccion": "Pacientes",
         "Productos": [
             {
                 "id": 1,
-                "producto": "1 pan con salchicha y 1 Pony malta",
-                "precio": "3000 COP"
+                "nombre": "Juan",
+                "direccion": "Calle 123",
+                "telefono": "555-1234"
             },
             {
                 "id": 2,
-                "producto": "1 Postre de oreo y 1 Budweiser",
-                "precio": "9000 COP"
+                "nombre": "Maria",
+                "direccion": "Calle 456",
+                "telefono": "555-5678"
             },
             {
                 "id": 3,
-                "producto": "6 Panes Integrales",
-                "precio": "4000 COP"
+                "nombre": "Luis",
+                "direccion": "Calle 789",
+                "telefono": "555-9012"
             },
             {
                 "id": 4,
-                "producto": "5 Panes cubiertos de chocolate",
-                "precio": "5500 COP"
+                "nombre": "Elena",
+                "direccion": "Calle 101",
+                "telefono": "555-3456"
             },
             {
                 "id": 5,
-                "producto": "3 Pasteles de Vainilla",
-                "precio": "13000 COP"
-            },
-            {
-                "id": 6,
-                "producto": "4 Postres de Oreo",
-                "precio": "25000 COP"
-            },
-            {
-                "id": 7,
-                "producto": "1 pan con salchicha y 1 Pony malta",
-                "precio": "3000 COP"
-            },
-            {
-                "id": 8,
-                "producto": "1 Postre de oreo y 1 Budweiser",
-                "precio": "9000 COP"
+                "nombre": "Sofia",
+                "direccion": "Calle 112",
+                "telefono": "555-7890"
             }
         ]
     },
     {
         "id": 6,
-        "Tienda": "Empleados",
+        "Seccion": "Empleados",
         "Productos": [
             {
                 "id": 1,
-                "producto": "1 pan con salchicha y 1 Pony malta",
-                "precio": "3000 COP"
+                "nombre": "Pedro",
+                "cargo": "Vendedor",
+                "fechaContratacion": "2020-01-01T00:00:00Z"
             },
             {
                 "id": 2,
-                "producto": "1 Postre de oreo y 1 Budweiser",
-                "precio": "9000 COP"
+                "nombre": "Ana",
+                "cargo": "Vendedora",
+                "fechaContratacion": "2019-05-15T00:00:00Z"
             },
             {
                 "id": 3,
-                "producto": "6 Panes Integrales",
-                "precio": "4000 COP"
+                "nombre": "Luis",
+                "cargo": "Gerente",
+                "fechaContratacion": "2018-02-10T00:00:00Z"
             },
             {
                 "id": 4,
-                "producto": "5 Panes cubiertos de chocolate",
-                "precio": "5500 COP"
-            },
-            {
-                "id": 5,
-                "producto": "3 Pasteles de Vainilla",
-                "precio": "13000 COP"
-            },
-            {
-                "id": 6,
-                "producto": "4 Postres de Oreo",
-                "precio": "25000 COP"
-            },
-            {
-                "id": 7,
-                "producto": "1 pan con salchicha y 1 Pony malta",
-                "precio": "3000 COP"
-            },
-            {
-                "id": 8,
-                "producto": "1 Postre de oreo y 1 Budweiser",
-                "precio": "9000 COP"
+                "nombre": "Sofia",
+                "cargo": "Administradora",
+                "fechaContratacion": "2021-03-01T00:00:00Z"
             }
         ]
     }

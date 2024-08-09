@@ -1,138 +1,149 @@
 import json
 from datetime import datetime
 
-# Conexion del Json general
-def abrirArchivo():
+# Conexión al archivo JSON general
+def abrir_archivo():
     with open("info.json", "r") as openfile:
         return json.load(openfile)
 
-def guardarArchivo(data):
+def guardar_archivo(data):
     with open("info.json", "w") as outfile:
         json.dump(data, outfile, indent=4)
 
-# Json que se genera después de realizar una compra
-def guardarCompras(compras):
-    with open("compras.json", "w") as outfile:
-        json.dump(compras, outfile, indent=4)
+# Guardar las ventas y compras en un archivo JSON separado
+def guardar_transacciones(transacciones):
+    with open("transacciones.json", "w") as outfile:
+        json.dump(transacciones, outfile, indent=4)
 
-def cargarCompras():
+def cargar_transacciones():
     try:
-        with open("compras.json", "r") as openfile:
+        with open("transacciones.json", "r") as openfile:
             return json.load(openfile)
     except FileNotFoundError:
         return []
 
-compras = cargarCompras()
+# Inicializar el archivo de transacciones
+transacciones = cargar_transacciones()
 
 # Bienvenida al usuario
-Name = input("Bienvenido usuario, ¿Cómo te llamas? ")
-print(f"Bienvenido Usuario {Name}")
+nombre_usuario = input("Bienvenido usuario, ¿Cómo te llamas? ")
+print(f"Bienvenido Usuario {nombre_usuario}")
 
-# Login de 4 tipos de usuarios
+# Login de usuarios
 print("¿Cómo quieres ingresar?")
 print("""
         1. Cliente
         2. Vendedor
         3. Gerente
-        4. Administrador
     """)
-Rango = int(input("¿Cuál es tu forma de acceso? "))
+rango = int(input("¿Cuál es tu forma de acceso? "))
 
-# Guardamos la fecha y hora cuando se haga la venta de los medicamentos empleados y pacientes
-def registrar_venta(paciente, empleado, medicamentos):
+# Registro de ventas
+def registrar_venta(data):
     fecha_venta = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+    
+    # Seleccionar paciente
+    pacientes = data[4]["Productos"]
+
+    for i, paciente in enumerate(pacientes):
+        print(f"{i+1}. {paciente['nombre']}")
+    paciente_id = int(input("Seleccione el ID del paciente: "))
+    paciente = pacientes[paciente_id]
+    
+    # Seleccionar empleado
+    empleados = data[4]["Productos"]
+    
+    for i, empleado in enumerate(empleados):
+        print(f"{i+1}. {empleado['nombre']} - {empleado['cargo']}")
+    empleado_id = int(input("Seleccione el ID del empleado: ")) - 1
+    empleado = empleados[empleado_id]
+    
+    # Seleccionar medicamento
+    medicamentos = data[0]["Productos"]
+
+    for i, medicamento in enumerate(medicamentos):
+        print(f"{i+1}. {medicamento['producto']} - Precio: {medicamento['precio']} - Stock: {medicamento['stock']}")
+    medicamento_id = int(input("Seleccione el ID del medicamento: ")) - 1
+    medicamento = medicamentos[medicamento_id]
+    
+    # Registrar la cantidad vendida
+    cantidad = int(input("Ingrese la cantidad vendida: "))
+    
+    # Verificar si hay suficiente stock
+    if cantidad > int(medicamento["stock"]):
+        print("No hay suficiente stock.")
+        return
+
+    # Actualizar el stock
+    medicamento["stock"] = str(int(medicamento["stock"]) - cantidad)
+    
+    # Registrar la venta
     venta = {
         "fecha": fecha_venta,
         "paciente": paciente,
         "empleado": empleado,
-        "medicamentos": medicamentos
+        "medicamento": {
+            "nombre": medicamento["producto"],
+            "cantidad": cantidad,
+            "precio": medicamento["precio"]
+        }
     }
-    compras.append(venta)
-    guardarCompras(compras)
+    transacciones.append(venta)
+    guardar_archivo(data)
+    guardar_transacciones(transacciones)
     print(f"Venta registrada con éxito el {fecha_venta}")
 
-# Guardamos la fecha y hora cuando se haga la compra del provedor y medicamentos
-def registrar_compra(proveedor, medicamentos):
+# Registro de compras
+def registrar_compra(data):
     fecha_compra = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+    
+    # Seleccionar proveedor
+    proveedores = data[3]["Productos"]
+
+    for i, proveedor in enumerate(proveedores):
+        print(f"{i+1}. {proveedor['Nombre']}")
+    proveedor_id = int(input("Seleccione el ID del proveedor: ")) - 1
+    proveedor = proveedores[proveedor_id]
+    
+    # Seleccionar medicamento
+    medicamentos = data[0]["Productos"]
+
+    for i, medicamento in enumerate(medicamentos):
+        print(f"{i+1}. {medicamento['producto']} - Precio de compra: {medicamento['precio']} - Stock: {medicamento['stock']}")
+    medicamento_id = int(input("Seleccione el ID del medicamento: ")) - 1
+    medicamento = medicamentos[medicamento_id]
+    
+    # Registrar la cantidad comprada
+    cantidad = int(input("Ingrese la cantidad comprada: "))
+    
+    # Actualizar el stock
+    medicamento["stock"] = str(int(medicamento["stock"]) + cantidad)
+    
+    # Registrar la compra
     compra = {
         "fecha": fecha_compra,
         "proveedor": proveedor,
-        "medicamentos": medicamentos
+        "medicamento": {
+            "nombre": medicamento["producto"],
+            "cantidad": cantidad,
+            "precio_compra": medicamento["precio"]
+        }
     }
-    compras.append(compra)
-    guardarCompras(compras)
+    transacciones.append(compra)
+    guardar_archivo(data)
+    guardar_transacciones(transacciones)
     print(f"Compra registrada con éxito el {fecha_compra}")
 
-# Menú de los productos
-def productos(grupo):
-    print("Tienda:", grupo["Tienda"])
-    for producto in grupo["Productos"]:
-        print("/////////////////////////////////////")
-        print("ID del producto:", producto["id"])
-        print("Nombre:", producto["producto"])
-        print("Precio:", producto["precio"])
-        print("/////////////////////////////////////")
+# Menú de productos
+def mostrar_productos(data):
+    print("Productos en stock:")
 
-# Menú de modificación del producto
-def modificar_producto(grupo):
-    try:
-        productos_id = int(input("Ingrese el ID del producto que desea modificar: "))
-    
-    except:
-        print("Opción no válida")
-        return
-    
-    for producto in grupo["Productos"]:
-        if producto["id"] == productos_id:
-            opcion = int(input("""
-                ¿Qué desea modificar del producto?
-                1. Nombre del producto
-                2. Precio del producto
-                """))
-            if opcion == 1:
-                producto["producto"] = input("Nuevo nombre del producto: ")
-            elif opcion == 2:
-                producto["precio"] = input("Nuevo precio del producto: ")
-            elif opcion == 0:
-                print("Opción inválida.")
-                return
-            guardarArchivo(data)
-            print("Cambio realizado.")
-            return
-    print("No se encontró ningún producto con ese ID")
+    for producto in data[0]["Productos"]:
+        print(f"{producto['id']}. {producto['producto']} - Precio: {producto['precio']} - Stock: {producto['stock']} - Expira: {producto['fecha de expiracion']}")
 
-def comprar_producto(data):
-    print("Lista de tiendas:")
-    for i, grupo in enumerate(data):
-        print(f"{i+1}. {grupo['Tienda']}")
-    tienda_id = int(input("Seleccione el ID de la tienda donde desea comprar: ")) - 1
-    if 0 <= tienda_id < len(data):
-        tienda = data[tienda_id]
-        productos(tienda)
-        producto_id = int(input("Ingrese el ID del producto que desea comprar: "))
-        for producto in tienda["Productos"]:
-            if producto["id"] == producto_id:
-                paciente = {
-                    "nombre": input("Nombre del paciente: "),
-                    "direccion": input("Dirección del paciente: ")
-                }
-                empleado = {
-                    "nombre": input("Nombre del empleado que realiza la venta: "),
-                    "cargo": input("Cargo del empleado: ")
-                }
-                medicamentos = [{
-                    "nombre": producto["producto"],
-                    "cantidad": int(input("Cantidad: ")),
-                    "precio": producto["precio"]
-                }]
-                registrar_venta(paciente, empleado, medicamentos)
-                return
-        print("No se encontró ningún producto con ese ID.")
-    else:
-        print("ID de tienda inválido.")
-
-# Menú de interacción con el cliente
+# Menú de cliente
 def menu_cliente(data):
+
     while True:
         print("****************************")
         print("      MENU DEL CLIENTE      ")
@@ -143,134 +154,93 @@ def menu_cliente(data):
         opcion = input("Seleccione una opción: ")
         
         if opcion == "1":
-            for grupo in data:
-                productos(grupo)
+            mostrar_productos(data)
                 
         elif opcion == "2":
-            comprar_producto(data)
+            registrar_venta(data)
                 
         elif opcion == "3":
             print("Gracias por usar el programa")
             break
+
         else:
-            print("Opción inválida.")
-    
-# Menú del moderador
+            print("Opción inválida")
+
+# Menú de moderador
 def menu_moderador(data):
+
     while True:
         print("............................")
         print("      MENU DEL MODERADOR     ")
         print("............................")
         print("1. Revisar productos")
         print("2. Modificar productos")
-        print("3. Salir")
+        print("3. Registrar compra")
+        print("4. Salir")
         opcion = input("Seleccione una opción: ")
         
         if opcion == "1":
-            for grupo in data:
-                productos(grupo)
+            mostrar_productos(data)
                 
         elif opcion == "2":
-            for grupo in data:
-                print(f"Tienda: {grupo['Tienda']}")
-                modificar_producto(grupo)
+            modificar_producto(data) # type: ignore
                 
         elif opcion == "3":
-            print("Gracias por usar el programa")
-            break
-        
-        else:
-            print("Opción inválida.")
-
-# Informe de ventas
-def generar_informe():
-    total_ingresos = 0
-    print("============================")
-    print("     INFORME DE VENTAS      ")
-    print("============================")
-    for compra in compras:
-        if "paciente" in compra:
-            print(f"Fecha: {compra['fecha']}")
-            print(f"Paciente: {compra['paciente']['nombre']}, Dirección: {compra['paciente']['direccion']}")
-            print(f"Empleado: {compra['empleado']['nombre']}, Cargo: {compra['empleado']['cargo']}")
-            for medicamento in compra['medicamentos']:
-                print(f"Medicamento: {medicamento['nombre']}, Cantidad: {medicamento['cantidad']}, Precio: {medicamento['precio']}")
-                precio_numerico = int(medicamento['precio'].split()[0])
-                total_ingresos += precio_numerico * medicamento['cantidad']
-        elif "proveedor" in compra:
-            print(f"Fecha: {compra['fecha']}")
-            print(f"Proveedor: {compra['proveedor']['nombre']}, Contacto: {compra['proveedor']['contacto']}")
-            for medicamento in compra['medicamentos']:
-                print(f"Medicamento: {medicamento['nombre']}, Cantidad: {medicamento['cantidad']}, Precio de compra: {medicamento['precio']}")
-    print("============================")
-    print(f"Total de ingresos: {total_ingresos} COP")
-    print("============================")
-
-# Menú del propietario
-def menu_propietario(data):
-    while True:
-        print("-----------------------------")
-        print("      MENU DE PROPIETARIO    ")
-        print("-----------------------------")
-        print("1. Revisar productos")
-        print("2. Modificar productos")
-        print("3. Ver registro de ventas")
-        print("4. Generar informe de ventas")
-        print("5. Registrar compra")
-        print("6. Salir")
-        opcion = input("Seleccione una opción: ")
-        
-        if opcion == "1":
-            for grupo in data:
-                productos(grupo)
-                
-        elif opcion == "2":
-            for grupo in data:
-                print(f"Tienda: {grupo['Tienda']}")
-                modificar_producto(grupo)
-                
-        elif opcion == "3":
-            print("Registro de ventas:")
-            for compra in compras:
-                if "paciente" in compra:
-                    print(f"Producto: {compra['medicamentos'][0]['nombre']}, Precio: {compra['medicamentos'][0]['precio']}, Fecha: {compra['fecha']}")
+            registrar_compra(data)
                 
         elif opcion == "4":
-            generar_informe()
-                
-        elif opcion == "5":
-            proveedor = {
-                "nombre": input("Nombre del proveedor: "),
-                "contacto": input("Contacto del proveedor: ")
-            }
-            medicamentos = []
-            while True:
-                medicamento = {
-                    "nombre": input("Nombre del medicamento: "),
-                    "cantidad": int(input("Cantidad: ")),
-                    "precio": input("Precio de compra: ")
-                }
-                medicamentos.append(medicamento)
-                continuar = input("¿Desea agregar otro medicamento? (s/n): ")
-                if continuar.lower() != "s":
-                    break
-            registrar_compra(proveedor, medicamentos)
-                
-        elif opcion == "6":
             print("Gracias por usar el programa")
             break
         
         else:
-            print("Opción inválida.")
+            print("Opción inválida")
 
-data = abrirArchivo()
+# Menú del gerente y administrador
+def menu_gerente(data):
 
-if Rango == 1:
+    while True:
+        print("-----------------------------")
+        print("      MENU DE GERENTE        ")
+        print("-----------------------------")
+        print("1. Revisar productos")
+        print("2. Registrar venta")
+        print("3. Registrar compra")
+        print("4. Ver registro de ventas y compras")
+        print("5. Salir")
+        opcion = input("Seleccione una opción: ")
+        
+        if opcion == "1":
+            mostrar_productos(data)
+                
+        elif opcion == "2":
+            registrar_venta(data)
+                
+        elif opcion == "3":
+            registrar_compra(data)
+                
+        elif opcion == "4":
+            for transaccion in transacciones:
+                print(transaccion)
+                
+        elif opcion == "5":
+            print("Gracias por usar el programa")
+            break
+        
+        else:
+            print("Opción inválida")
+
+# Cargar datos y seleccionar el menú según el rango del usuario
+data = abrir_archivo()
+
+if rango == 1:
     menu_cliente(data)
-elif Rango == 2:
+
+elif rango == 2:
     menu_moderador(data)
-elif Rango == 3:
-    menu_propietario(data)
+
+elif rango == 3:
+    menu_gerente(data)
+
 else:
     print("Opción de acceso inválida")
 
